@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Mistrzostwa świata</title>
+</head>
+<body>
+
+<header>
+  <h1>Moje Zapasy</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Strona Główna</a></li>
+    <li><a href="ja.html">Moje osiagniecia</a></li>
+    <li><a href="mistrzostwa.html">Mistrzostwa świata</a></li>
+  </ul>
+</nav>
+<div class="section">
+  <h2>Mistrzostwa świata U-17 w Buenos Aires odbędą się za:</h2>
+  <div id="countdown"></div>
+</div>
+<script>
+  // Data Mistrzostw Świata w zapasach U17
+  const targetDate = new Date("2024-08-19T00:00:00");
+
+  // Aktualizacja licznika co sekundę
+  const countdownInterval = setInterval(updateCountdown, 1000);
+
+  function updateCountdown() {
+    const currentDate = new Date();
+    const timeDifference = targetDate - currentDate;
+
+    if (timeDifference <= 0) {
+      // Mistrzostwa już się rozpoczęły
+      document.getElementById('countdown').innerHTML = "Mistrzostwa Świata rozpoczęły się!";
+      clearInterval(countdownInterval);
+    } else {
+      // Licznik odliczania
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+  }
+</script>
+
+</body>
+</html>
